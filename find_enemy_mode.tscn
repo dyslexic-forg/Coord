@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://bh011ln7qqmxg"]
+
+[ext_resource type="Script" path="res://find_enemy_mode.gd" id="1_alibm"]
+[ext_resource type="PackedScene" uid="uid://dtd3dkmm30la5" path="res://cartesian_plane.tscn" id="1_yu5xj"]
+[ext_resource type="PackedScene" uid="uid://b13kvr20rxrby" path="res://calculator.tscn" id="2_jmpcv"]
+[ext_resource type="PackedScene" uid="uid://cdc1ui67mj72q" path="res://laser.tscn" id="3_6pogl"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_hkx0e"]
+[ext_resource type="PackedScene" uid="uid://de0ipmvfkhrwi" path="res://enemy.tscn" id="3_phphv"]
+[ext_resource type="PackedScene" uid="uid://b883t2xchs55o" path="res://planet.tscn" id="5_r0sty"]
+[ext_resource type="Script" path="res://GameOverScreen.gd" id="8_m10xk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3oro"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4a6h"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0oqp"]
+font_size = 32
+font_color = Color(1, 0.788235, 0.329412, 1)
+
+[sub_resource type="Animation" id="Animation_xwc6u"]
+resource_name = "blink_label"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww856"]
+_data = {
+"blink_label": SubResource("Animation_xwc6u")
+}
+
+[node name="FindEnemyMode" type="Node2D"]
+script = ExtResource("1_alibm")
+
+[node name="CartesianPlane" parent="." instance=ExtResource("1_yu5xj")]
+unity = 40
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_hkx0e")
+
+[node name="Laser" parent="." instance=ExtResource("3_6pogl")]
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Enemy" parent="." instance=ExtResource("3_phphv")]
+
+[node name="Planet" parent="." instance=ExtResource("5_r0sty")]
+
+[node name="Calculator" parent="." instance=ExtResource("2_jmpcv")]
+offset_left = 292.0
+offset_top = 20.0
+offset_right = 561.0
+offset_bottom = 301.0
+
+[node name="Score" type="Label" parent="."]
+offset_left = -539.0
+offset_top = -286.0
+offset_right = -418.0
+offset_bottom = -241.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_s3oro")
+
+[node name="GameOverScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -572.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 325.0
+script = ExtResource("8_m10xk")
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 38.0
+offset_right = 845.0
+offset_bottom = 175.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_u4a6h")
+
+[node name="Label2" type="Label" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 184.0
+offset_right = 772.0
+offset_bottom = 229.0
+text = "Press ENTER to play again"
+label_settings = SubResource("LabelSettings_k0oqp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverScreen/Label2"]
+libraries = {
+"": SubResource("AnimationLibrary_ww856")
+}
+autoplay = "blink_label"
+
+[connection signal="fire" from="Enemy" to="." method="_on_enemy_fire"]
+[connection signal="die" from="Planet" to="." method="_on_planet_die"]
+[connection signal="has_take_damage" from="Planet" to="." method="_on_planet_has_take_damage"]
+[connection signal="expression_entered" from="Calculator" to="." method="_on_calculator_expression_entered"]
+[connection signal="new_game" from="GameOverScreen" to="." method="_on_game_over_screen_new_game"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrikicktc7ym"]
+
+[ext_resource type="Texture2D" uid="uid://ckn843s57xkps" path="res://assets/PNG/Power-ups/star_gold.png" id="1_s288g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4so1b"]
+radius = 11.0
+
+[node name="Star" type="Area2D" groups=["stars"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s288g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_4so1b")

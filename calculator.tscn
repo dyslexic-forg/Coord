@@ -1,0 +1,171 @@
+[gd_scene load_steps=3 format=3 uid="uid://b13kvr20rxrby"]
+
+[ext_resource type="Script" path="res://calculator.gd" id="1_f1jb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o22gb"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Calculator" type="PanelContainer"]
+offset_right = 269.0
+offset_bottom = 281.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o22gb")
+script = ExtResource("1_f1jb1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Entry" type="LineEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+alignment = 2
+virtual_keyboard_enabled = false
+
+[node name="Numpad" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="PlusButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="SevenButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "7"
+
+[node name="EightButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "8"
+
+[node name="NineButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "9"
+
+[node name="ClearButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "C"
+
+[node name="MinusButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
+
+[node name="FourButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "4"
+
+[node name="FiveButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "5"
+
+[node name="SixButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "6"
+
+[node name="BackspaceButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "⌫"
+
+[node name="TimesButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "×"
+
+[node name="OneButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="TwoButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "2"
+
+[node name="ThreeButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "3"
+
+[node name="ZeroButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="DivButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "÷"
+
+[node name="ParensLeftButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "("
+
+[node name="ComaButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = ","
+
+[node name="ParensRightButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = ")"
+
+[node name="EqualButton" type="Button" parent="VBoxContainer/Numpad"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+
+[connection signal="pressed" from="VBoxContainer/Numpad/PlusButton" to="." method="_on_plus_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/SevenButton" to="." method="_on_seven_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/EightButton" to="." method="_on_eight_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/NineButton" to="." method="_on_nine_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/FourButton" to="." method="_on_four_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/FiveButton" to="." method="_on_five_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/SixButton" to="." method="_on_six_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/BackspaceButton" to="." method="_on_backspace_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/TimesButton" to="." method="_on_times_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/OneButton" to="." method="_on_one_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/TwoButton" to="." method="_on_two_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ThreeButton" to="." method="_on_three_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ZeroButton" to="." method="_on_zero_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/DivButton" to="." method="_on_div_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ParensLeftButton" to="." method="_on_parens_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ComaButton" to="." method="_on_coma_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/ParensRightButton" to="." method="_on_parens_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Numpad/EqualButton" to="." method="_on_equal_button_pressed"]

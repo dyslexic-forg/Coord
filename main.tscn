@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4lffrfrqhoul"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_it8jr"]
+[ext_resource type="PackedScene" uid="uid://bh011ln7qqmxg" path="res://find_enemy_mode.tscn" id="2_xek2f"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_it8jr")
+
+[node name="FindEnemyMode" parent="." instance=ExtResource("2_xek2f")]
